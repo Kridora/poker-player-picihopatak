@@ -56,7 +56,8 @@ public class Strategy {
             
         }
         if (doWeHave.pair(me.getHole_cards())) {
-            return minimumRaise(gameState);
+            if(gameState.getCurrent_buy_in() < gameState.getSmall_blind()*4)
+                return minimumRaise(gameState);
         }
         return 0;
     }
@@ -71,10 +72,7 @@ public class Strategy {
 
     public int minimumRaise(GameState gameState) {
         PlayerBot me = gameState.getMe();
-        if(gameState.getCurrent_buy_in() < gameState.getSmall_blind()*4)
-        	return gameState.getCurrent_buy_in() - me.getBet() + gameState.getMinimum_raise();
-        else
-        	return 0;
+        return gameState.getCurrent_buy_in() - me.getBet() + gameState.getMinimum_raise();
     }
 
     public int call(GameState gameState) {
