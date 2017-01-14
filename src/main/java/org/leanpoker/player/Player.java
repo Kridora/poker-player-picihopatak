@@ -14,8 +14,10 @@ public class Player {
 
         GameState gameState = new GsonBuilder().create().fromJson(request, GameState.class);
         DoWeHave doWeHave = new DoWeHave();
-        
+        /*
         return new Strategy().getBet(doWeHave, gameState);
+        */
+        return 0;
     }
 
     public static void showdown(JsonElement game) {
