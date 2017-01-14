@@ -21,7 +21,7 @@ public class Player {
         {
             return gameState.getCurrent_buy_in() - me.getBet() + gameState.getMinimum_raise();
         }
-
+        
         return 0;
 
     }

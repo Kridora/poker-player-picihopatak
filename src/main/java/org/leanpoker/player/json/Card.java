@@ -6,8 +6,27 @@ package org.leanpoker.player.json;
 
 
 public class Card {
-    private int rank;
+    private RankEnum rank;
     private String suit;
+   
+    public static enum RankEnum
+    {
+    	zero,
+    	one,
+    	two,
+    	three,
+    	four,
+    	five,
+    	six,
+    	seven,
+    	eight,
+    	nine,
+    	ten,
+    	Jack,
+    	Queen,
+    	King,
+    	Ace	
+    }
 
     public Card(String rank, String suit) {
         this.rank = Rank(rank);
@@ -18,7 +37,7 @@ public class Card {
         return rank;
     }
 
-    public void setRank(int rank) {
+    public void setRank(RankEnum rank) {
         this.rank = rank;
     }
 
@@ -30,35 +49,35 @@ public class Card {
         this.suit = suit;
     }
 
-    public int Rank(String rank) {
+    public RankEnum Rank(String rank)
         switch (rank) {
             case "2":
-                return 2;
+			return RankEnum.two;			
 
             case "3":
-                return 3;
+			return RankEnum.three;			
             case "4":
-                return 4;
+			return RankEnum.four;			
             case "5":
-                return 5;
+			return RankEnum.five;			
             case "6":
-                return 6;
+			return RankEnum.six;			
             case "7":
-                return 7;
+			return RankEnum.seven;			
             case "8":
-                return 8;
+			return RankEnum.eight;			
             case "9":
-                return 9;
+			return RankEnum.nine;			
             case "10":
-                return 10;
+			return RankEnum.ten;			
             case "J":
-                return 11;
+			return RankEnum.Jack;			
             case "Q":
-                return 12;
+			return RankEnum.Queen;			
             case "K":
-                return 13;
+			return RankEnum.King;			
             case "A":
-                return 14;
+			return RankEnum.Ace;			
             default:
                 return 0;
         }
