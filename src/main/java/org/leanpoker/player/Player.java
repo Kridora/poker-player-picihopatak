@@ -16,11 +16,15 @@ public class Player {
         DoWeHave doWeHave = new DoWeHave();
 
         PlayerBot me = gameState.getPlayers().get(gameState.getIn_action());
+        if (false) {
 
+            Integer x = Player.getBet(doWeHave, me, gameState);
+            if (x != null) return x;
 
-        Integer x = Player.getBet(doWeHave, me, gameState);
-        if (x != null) return x;
-
+        }
+        if (doWeHave.pair(me.getHole_cards())) {
+            return minimumRaise(gameState, me);
+        }
         return 0;
 
     }
