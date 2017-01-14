@@ -61,6 +61,17 @@ public class CardsFactoryForTest {
         return cards;
     }
 
+    public List<Card> getFlushCards() {
+
+        cards.add(new Card("2", "hearts"));
+        cards.add(new Card("3", "hearts"));
+        cards.add(new Card("7", "hearts"));
+        cards.add(new Card("A", "hearts"));
+        cards.add(new Card("10", "hearts"));
+
+        return cards;
+    }
+
     public List<Card> getNothing(int twoOrFive) {
 
         if (twoOrFive == 5) {

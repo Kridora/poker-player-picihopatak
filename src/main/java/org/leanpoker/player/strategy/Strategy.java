@@ -36,6 +36,9 @@ public class Strategy {
                 case "fullhouse":
                     bet = minimumRaise(gameState);
                     break;
+                case "flush":
+                    bet = minimumRaise(gameState);
+                    break;
                 default:
                     bet = call(gameState);
                     break;
@@ -47,13 +50,12 @@ public class Strategy {
             if (doWeHave.pair(me.getHole_cards())) {
                 return minimumRaise(gameState);
             }
-            if(gameState.getCurrent_buy_in() > gameState.getSmall_blind()*2){
-            	return 0;
+            if (gameState.getCurrent_buy_in() > gameState.getSmall_blind() * 2) {
+                return 0;
+            } else {
+                return call(gameState);
             }
-            else {
-            	return call(gameState);
-            }
-            
+
         }
         if (doWeHave.pair(me.getHole_cards())) {
             return minimumRaise(gameState);
@@ -61,7 +63,7 @@ public class Strategy {
         return 0;
     }
 
-    public int getBetPairStrat(DoWeHave doWeHave, GameState gameState){
+    public int getBetPairStrat(DoWeHave doWeHave, GameState gameState) {
         PlayerBot me = gameState.getMe();
         if (doWeHave.pair(me.getHole_cards())) {
             return call(gameState);

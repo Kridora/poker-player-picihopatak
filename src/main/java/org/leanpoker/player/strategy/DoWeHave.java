@@ -24,9 +24,8 @@ public class DoWeHave {
         Map<RankEnum, Integer> cardNum = cardCount(cards);
         for (Map.Entry<RankEnum, Integer> card : cardNum.entrySet()) {
             if (card.getValue() == 2 && card.getKey().compareTo(RankEnum.ten) >= 0) {
-                for (Card card1: community_cards){
-                    if(card1.getRankEnum().compareTo(card.getKey()) >= 0)
-                    {
+                for (Card card1 : community_cards) {
+                    if (card1.getRankEnum().compareTo(card.getKey()) >= 0) {
                         return false;
                     }
                 }
@@ -35,9 +34,9 @@ public class DoWeHave {
         }
         return false;
     }
-    
-    public boolean pocketPairs(Card card1, Card card2){
-    	return card1.getRank() == card2.getRank();
+
+    public boolean pocketPairs(Card card1, Card card2) {
+        return card1.getRank() == card2.getRank();
     }
 
     public String whatDoWeHaveMax(List<Card> cards, List<Card> community_cards) {
@@ -53,6 +52,9 @@ public class DoWeHave {
         }
         if (triple(cards)) {
             whatWeHave = "drill";
+        }
+        if (flush(cards)) {
+            whatWeHave = "flush";
         }
         if (fullHouse(cards)) {
             whatWeHave = "fullhouse";
@@ -72,6 +74,19 @@ public class DoWeHave {
             }
         }
         return cardNum;
+    }
+
+    private Map<String, Integer> cardSuits(List<Card> cards) {
+        Map<String, Integer> cardSuit = new HashMap<>();
+        for (Card card : cards) {
+            String suit = card.getSuit();
+            if (cardSuit.get(suit) != null) {
+                cardSuit.put(card.getSuit(), cardSuit.get(suit) + 1);
+            } else {
+                cardSuit.put(suit, 1);
+            }
+        }
+        return cardSuit;
     }
 
     public boolean premiumCards(List<Card> cards) {
@@ -117,5 +132,16 @@ public class DoWeHave {
         }
         return false;
     }
+
+    public boolean flush(List<Card> cards) {
+        Map<String, Integer> cardSuit = cardSuits(cards);
+        for (int cardNumber : cardSuit.values()) {
+            if (cardNumber == 5) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 }
