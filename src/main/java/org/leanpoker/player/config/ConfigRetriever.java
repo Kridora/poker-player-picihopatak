@@ -16,5 +16,5 @@ public class ConfigRetriever {
         return new GsonBuilder().create().fromJson(jsonText, Config.class);
     }
 
-    
+
 }

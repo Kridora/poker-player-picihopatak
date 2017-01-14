@@ -17,8 +17,6 @@ public class Player {
     private static Config config;
 
     public static int betRequest(JsonElement request) throws IOException {
-    	
-    	
 
         GameState gameState = new GsonBuilder().create().fromJson(request, GameState.class);
         DoWeHave doWeHave = new DoWeHave();
@@ -26,14 +24,9 @@ public class Player {
         if(gameState.getRound() == 0){
         	config = ConfigRetriever.readJsonFromUrl();
         }
-        Card card1 = gameState.getMe().getHole_cards().get(0);
-        Card card2 = gameState.getMe().getHole_cards().get(1);
       
         if (config != null && config.getKEEP_POCKET_PAIRS().equals("ON")) {
-            if(doWeHave.pocketPairs(card1, card2))
-            		//return new Strategy().call(gameState);
-            	return 76;
-            
+            return new Strategy().getBetPairStrat(doWeHave, gameState);
         }
         return 0;
     }
