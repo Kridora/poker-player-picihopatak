@@ -8,6 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 public class PlayerTest {
 
+
     @Test
     public void testBetRequest() throws Exception {
 
@@ -16,4 +17,5 @@ public class PlayerTest {
         assertEquals(0, Player.betRequest(jsonElement));
 
     }
+
 }

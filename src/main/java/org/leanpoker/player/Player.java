@@ -17,13 +17,33 @@ public class Player {
 
         PlayerBot me = gameState.getPlayers().get(gameState.getIn_action());
 
-        if(doWeHave.pair(me.getHole_cards()))
-        {
-            return gameState.getCurrent_buy_in() - me.getBet() + gameState.getMinimum_raise();
-        }
-        
+
+        Integer x = Player.getBet(doWeHave, me, gameState);
+        if (x != null) return x;
+
         return 0;
 
+    }
+
+    public static Integer getBet(DoWeHave doWeHave, PlayerBot me, GameState gameState) {
+        if (doWeHave.premiumCards(me.getHole_cards())) {
+            if (doWeHave.pair(me.getHole_cards())) {
+                return minimumRaise(gameState, me);
+            }
+            return call(gameState, me);
+        }
+        if (doWeHave.pair(me.getHole_cards())) {
+            return call(gameState, me);
+        }
+        return null;
+    }
+
+    private static int minimumRaise(GameState gameState, PlayerBot me) {
+        return gameState.getCurrent_buy_in() - me.getBet() + gameState.getMinimum_raise();
+    }
+
+    private static int call(GameState gameState, PlayerBot me) {
+        return gameState.getCurrent_buy_in() - me.getBet();
     }
 
     public static void showdown(JsonElement game) {
