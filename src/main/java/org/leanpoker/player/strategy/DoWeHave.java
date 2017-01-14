@@ -8,6 +8,16 @@ import java.util.Map;
 
 public class DoWeHave {
     public boolean pair(List<Card> cards) {
+        Map<Integer, Integer> cardNum = cardCount(cards);
+        for (int cardNumber : cardNum.values()) {
+            if (cardNumber == 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private Map<Integer, Integer> cardCount(List<Card> cards) {
         Map<Integer, Integer> cardNum = new HashMap<>();
         for (Card card : cards) {
             int rank = card.getRank();
@@ -17,12 +27,7 @@ public class DoWeHave {
                 cardNum.put(rank, 1);
             }
         }
-        for (int cardNumber : cardNum.values()) {
-            if (cardNumber == 2) {
-                return true;
-            }
-        }
-        return false;
+        return cardNum;
     }
 
     public boolean premiumCards(List<Card> cards) {
@@ -33,6 +38,37 @@ public class DoWeHave {
             }
         }
         if (numOfPremiumCard >= 2) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean triple(List<Card> cards) {
+        Map<Integer, Integer> cardNum = cardCount(cards);
+        for (int cardNumber : cardNum.values()) {
+            if (cardNumber == 3) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean twoPair(List<Card> cards) {
+        int pairs = 0;
+        Map<Integer, Integer> cardNum = cardCount(cards);
+        for (int cardNumber : cardNum.values()) {
+            if (cardNumber == 2) {
+                pairs++;
+            }
+        }
+        if (pairs == 2) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean fullHouse(List<Card> cards) {
+        if (pair(cards) && triple(cards)) {
             return true;
         }
         return false;
