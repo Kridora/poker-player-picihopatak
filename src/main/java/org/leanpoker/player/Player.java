@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class Player {
 
-    static final String VERSION = "pair";
+    static final String VERSION = "No brain, no pain";
     private static Config config;
 
     public static int betRequest(JsonElement request) throws IOException {

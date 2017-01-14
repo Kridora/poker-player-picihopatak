@@ -13,13 +13,13 @@ public class Strategy {
         PlayerBot me = gameState.getMe();
         List<Card> cards = me.getHole_cards();
 
-        int activePlayers = 0;
+        int outPlayers = 0;
         for (PlayerBot playerBot : gameState.getPlayers()) {
-            if(playerBot.getStatus().equals("active")){
-                activePlayers++;
+            if(playerBot.getStatus().equals("out")){
+                outPlayers++;
             }
         }
-        if(activePlayers == 2 && doWeHave.onePremiumCard(cards)){
+        if(gameState.getPlayers().size() - outPlayers == 2 && doWeHave.onePremiumCard(cards)){
             return 20000;
         }
 
@@ -30,7 +30,7 @@ public class Strategy {
                 cards.add(card);
             }
             int bet = 0;
-            switch (doWeHave.whatDoWeHaveMax(cards)) {
+            switch (doWeHave.whatDoWeHaveMax(cards, gameState.getCommunity_cards())) {
                 case "pair":
                     bet = 0;
                     break;

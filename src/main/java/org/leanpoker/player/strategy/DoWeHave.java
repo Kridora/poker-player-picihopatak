@@ -20,10 +20,10 @@ public class DoWeHave {
         return false;
     }
 
-    public boolean bigPair(List<Card> cards) {
+    public boolean bigPair(List<Card> cards, List<Card> community_cards) {
         Map<RankEnum, Integer> cardNum = cardCount(cards);
         for (Map.Entry<RankEnum, Integer> card : cardNum.entrySet()) {
-            if (card.getValue() == 2 && card.getKey().compareTo(RankEnum.ten) >= 0) {
+            if (card.getValue() == 2 && card.getKey().compareTo(RankEnum.ten) >= 0 && !pair(community_cards)) {
                 return true;
             }
         }
@@ -43,12 +43,12 @@ public class DoWeHave {
         return false;
     }
 
-    public String whatDoWeHaveMax(List<Card> cards) {
+    public String whatDoWeHaveMax(List<Card> cards, List<Card> community_cards) {
         String whatWeHave = "";
         if (pair(cards)) {
             whatWeHave = "pair";
         }
-        if (bigPair(cards)) {
+        if (bigPair(cards, community_cards)) {
             whatWeHave = "bigPair";
         }
         if (twoPair(cards)) {
