@@ -37,7 +37,7 @@ public class Strategy {
                     bet = minimumRaise(gameState);
                     break;
                 default:
-                    bet = call(gameState);
+                    bet = 0;
                     break;
             }
             return bet;
