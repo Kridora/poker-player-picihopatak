@@ -1,7 +1,5 @@
 package org.leanpoker.player.json;
 
-import org.leanpoker.player.Player;
-
 import java.util.List;
 
 /**
