@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 public class DoWeHave {
+
+
     public boolean pair(List<Card> cards) {
         Map<RankEnum, Integer> cardNum = cardCount(cards);
         for (int cardNumber : cardNum.values()) {
@@ -16,6 +18,24 @@ public class DoWeHave {
             }
         }
         return false;
+    }
+
+    public String whatDoWeHave(List<Card> cards) {
+        String whatWeHave = "";
+        if (pair(cards)) {
+            whatWeHave = "pair";
+        }
+        if (twoPair(cards)) {
+            whatWeHave = "twopair";
+        }
+        if (triple(cards)) {
+            whatWeHave = "drill";
+        }
+        if (fullHouse(cards)) {
+            whatWeHave = "fullhouse";
+        }
+        return whatWeHave;
+
     }
 
     private Map<RankEnum, Integer> cardCount(List<Card> cards) {
