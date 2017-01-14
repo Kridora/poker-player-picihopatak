@@ -17,6 +17,10 @@ public class DoWeHave {
         }
         return false;
     }
+    
+    public boolean pocketPairs(Card card1, Card card2){
+    	return card1.getRank() == card2.getRank();
+    }
 
     private Map<RankEnum, Integer> cardCount(List<Card> cards) {
         Map<RankEnum, Integer> cardNum = new HashMap<>();

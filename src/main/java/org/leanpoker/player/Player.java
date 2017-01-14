@@ -3,6 +3,7 @@ package org.leanpoker.player;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import org.leanpoker.player.config.ConfigRetriever;
+import org.leanpoker.player.json.Card;
 import org.leanpoker.player.json.Config;
 import org.leanpoker.player.json.GameState;
 import org.leanpoker.player.strategy.DoWeHave;
@@ -19,9 +20,12 @@ public class Player {
 
         GameState gameState = new GsonBuilder().create().fromJson(request, GameState.class);
         DoWeHave doWeHave = new DoWeHave();
-
+        Card card1 = gameState.getMe().getHole_cards().get(0);
+        Card card2 = gameState.getMe().getHole_cards().get(1);
+      
         if (config != null && config.getKEEP_POCKET_PAIRS().equals("ON")) {
-            return new Strategy().getBetPairStrat(doWeHave, gameState);
+            if(doWeHave.pocketPairs(card1, card2))
+            		new Strategy().call(gameState);
         }
         return 0;
     }
