@@ -1,6 +1,5 @@
 package org.leanpoker.player.strategy;
 
-import org.leanpoker.player.json.Card;
 import org.leanpoker.player.json.GameState;
 import org.leanpoker.player.json.PlayerBot;
 
@@ -55,10 +54,13 @@ public class Strategy {
         return 0;
     }
 
-
-
-
-
+    public int getBetPairStrat(DoWeHave doWeHave, GameState gameState){
+        PlayerBot me = gameState.getMe();
+        if (doWeHave.pair(me.getHole_cards())) {
+            return call(gameState);
+        }
+        return 0;
+    }
 
     public int minimumRaise(GameState gameState) {
         PlayerBot me = gameState.getMe();

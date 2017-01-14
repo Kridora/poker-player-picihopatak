@@ -1,8 +1,6 @@
 package org.leanpoker.player.json;
 
-/**
- * Created by kissbalazs on 2017. 01. 14..
- */
+
 public class Config {
     private String KEEP_POCKET_PAIRS;
 

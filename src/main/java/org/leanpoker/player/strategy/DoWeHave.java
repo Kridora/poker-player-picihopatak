@@ -19,6 +19,10 @@ public class DoWeHave {
         }
         return false;
     }
+    
+    public boolean pocketPairs(Card card1, Card card2){
+    	return card1.getRank() == card2.getRank();
+    }
 
     public String whatDoWeHave(List<Card> cards) {
         String whatWeHave = "";
@@ -41,7 +45,7 @@ public class DoWeHave {
     private Map<RankEnum, Integer> cardCount(List<Card> cards) {
         Map<RankEnum, Integer> cardNum = new HashMap<>();
         for (Card card : cards) {
-            RankEnum rank = card.getRank();
+            RankEnum rank = card.getRankEnum();
             if (cardNum.get(rank) != null) {
                 cardNum.put(rank, cardNum.get(rank) + 1);
             } else {
@@ -54,7 +58,7 @@ public class DoWeHave {
     public boolean premiumCards(List<Card> cards) {
         int numOfPremiumCard = 0;
         for (Card card : cards) {
-            if (card.getRank().compareTo(RankEnum.ten) >= 0) {
+            if (card.getRankEnum().compareTo(RankEnum.ten) >= 0) {
                 numOfPremiumCard++;
             }
         }

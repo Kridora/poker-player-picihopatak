@@ -6,7 +6,7 @@ package org.leanpoker.player.json;
 
 
 public class Card {
-    private RankEnum rank;
+    private String rank;
     private String suit;
    
     public static enum RankEnum
@@ -29,15 +29,19 @@ public class Card {
     }
 
     public Card(String rank, String suit) {
-        this.rank = Rank(rank);
+        this.rank = rank;
         this.suit = suit;
     }
 
-    public RankEnum getRank() {
+    public String getRank() {
         return rank;
     }
 
-    public void setRank(RankEnum rank) {
+    public void setSuit(String suit) {
+        this.suit = suit;
+    }
+
+    public void setRank(String rank) {
         this.rank = rank;
     }
 
@@ -45,8 +49,8 @@ public class Card {
         return suit;
     }
 
-    public void setSuit(String suit) {
-        this.suit = suit;
+    public RankEnum getRankEnum(){
+        return Rank(this.rank);
     }
 
     public RankEnum Rank(String rank) {
