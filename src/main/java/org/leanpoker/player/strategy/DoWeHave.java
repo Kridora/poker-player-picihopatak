@@ -29,9 +29,18 @@ public class DoWeHave {
         }
         return false;
     }
-    
-    public boolean pocketPairs(Card card1, Card card2){
-    	return card1.getRank() == card2.getRank();
+
+    public boolean onePremiumCard(List<Card> cards) {
+        int numOfPremiumCard = 0;
+        for (Card card : cards) {
+            if (card.getRankEnum().compareTo(RankEnum.Jack) >= 0) {
+                numOfPremiumCard++;
+            }
+        }
+        if (numOfPremiumCard >= 1) {
+            return true;
+        }
+        return false;
     }
 
     public String whatDoWeHaveMax(List<Card> cards) {

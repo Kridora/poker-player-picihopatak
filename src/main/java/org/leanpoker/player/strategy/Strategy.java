@@ -13,6 +13,16 @@ public class Strategy {
         PlayerBot me = gameState.getMe();
         List<Card> cards = me.getHole_cards();
 
+        int activePlayers = 0;
+        for (PlayerBot playerBot : gameState.getPlayers()) {
+            if(playerBot.getStatus().equals("active")){
+                activePlayers++;
+            }
+        }
+        if(activePlayers == 2 && doWeHave.onePremiumCard(cards)){
+            return 20000;
+        }
+
 
         if (isPostFlop(gameState, me)) {
             List<Card> communityCards = gameState.getCommunity_cards();
