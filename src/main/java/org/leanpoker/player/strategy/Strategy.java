@@ -31,10 +31,10 @@ public class Strategy {
                     bet = minimumRaise(gameState);
                     break;
                 case "drill":
-                    bet = minimumRaise(gameState);
+                    bet = call(gameState);
                     break;
                 case "fullhouse":
-                    bet = minimumRaise(gameState);
+                    bet = call(gameState);
                     break;
                 default:
                     bet = call(gameState);
