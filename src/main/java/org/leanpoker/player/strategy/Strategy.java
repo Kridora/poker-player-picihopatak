@@ -20,7 +20,7 @@ public class Strategy {
                 cards.add(card);
             }
             int bet = 0;
-            switch (doWeHave.whatDoWeHaveMax(cards)) {
+            switch (doWeHave.whatDoWeHaveMax(cards, communityCards)) {
                 case "pair":
                     bet = 0;
                     break;
