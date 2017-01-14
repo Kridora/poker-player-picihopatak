@@ -10,10 +10,16 @@ public class Strategy {
             if (doWeHave.pair(me.getHole_cards())) {
                 return minimumRaise(gameState);
             }
-            return call(gameState);
+            if(gameState.getCurrent_buy_in() > gameState.getSmall_blind()*2){
+            	return 0;
+            }
+            else {
+            	return call(gameState);
+            }
+            
         }
         if (doWeHave.pair(me.getHole_cards())) {
-            return call(gameState);
+            return minimumRaise(gameState);
         }
         return 0;
     }

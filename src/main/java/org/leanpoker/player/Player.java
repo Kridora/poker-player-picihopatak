@@ -39,7 +39,7 @@ public class Player {
         				return 0;        			
         		}
         	}
-            return new Strategy().getBet(doWeHave, gameState);
+          return new Strategy().getBet(doWeHave, gameState);
         }
         return 0;
     }
