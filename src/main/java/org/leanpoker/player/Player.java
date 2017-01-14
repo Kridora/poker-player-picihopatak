@@ -31,7 +31,8 @@ public class Player {
       
         if (config != null && config.getKEEP_POCKET_PAIRS().equals("ON")) {
             if(doWeHave.pocketPairs(card1, card2))
-            		new Strategy().call(gameState);
+            		return new Strategy().call(gameState);
+            
         }
         return 0;
     }
