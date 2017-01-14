@@ -30,7 +30,7 @@ public class Player {
       
         if (config != null && config.getKEEP_POCKET_PAIRS().equals("ON")) {
         	if (bbLimit > 0){
-        		if(bbLimit*gameState.getSmall_blind()*2< gameState.getMe().getStack()  ){
+        		if(bbLimit*gameState.getSmall_blind()*2> gameState.getMe().getStack()  ){
         			/*premium lap*/
         			if (doWeHave.premiumCards(gameState.getMe().getHole_cards())) {
             			return 20000;						
