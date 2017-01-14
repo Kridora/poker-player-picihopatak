@@ -16,10 +16,16 @@ public class Player {
     static final String VERSION = "pair";
     private static Config config;
 
-    public static int betRequest(JsonElement request) {
+    public static int betRequest(JsonElement request) throws IOException {
+    	
+    	
 
         GameState gameState = new GsonBuilder().create().fromJson(request, GameState.class);
         DoWeHave doWeHave = new DoWeHave();
+        
+        if(gameState.getRound() == 0){
+        	config = ConfigRetriever.readJsonFromUrl();
+        }
         Card card1 = gameState.getMe().getHole_cards().get(0);
         Card card2 = gameState.getMe().getHole_cards().get(1);
       
@@ -31,6 +37,6 @@ public class Player {
     }
 
     public static void showdown(JsonElement game) throws IOException {
-        config = ConfigRetriever.readJsonFromUrl();
+        
     }
 }
