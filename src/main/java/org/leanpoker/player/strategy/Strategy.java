@@ -1,5 +1,6 @@
 package org.leanpoker.player.strategy;
 
+import org.leanpoker.player.json.Card;
 import org.leanpoker.player.json.GameState;
 import org.leanpoker.player.json.PlayerBot;
 
@@ -19,8 +20,11 @@ public class Strategy {
                 cards.add(card);
             }
             int bet = 0;
-            switch (doWeHave.whatDoWeHave(cards)) {
+            switch (doWeHave.whatDoWeHaveMax(cards)) {
                 case "pair":
+                    bet = 0;
+                    break;
+                case "bigPair":
                     bet = minimumRaise(gameState);
                     break;
                 case "twopair":
@@ -38,9 +42,6 @@ public class Strategy {
             }
             return bet;
         }
-
-
-
 
         if (doWeHave.premiumCards(me.getHole_cards())) {
             if (doWeHave.pair(me.getHole_cards())) {

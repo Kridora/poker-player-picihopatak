@@ -19,15 +19,28 @@ public class DoWeHave {
         }
         return false;
     }
+
+    public boolean bigPair(List<Card> cards) {
+        Map<RankEnum, Integer> cardNum = cardCount(cards);
+        for (Map.Entry<RankEnum, Integer> card : cardNum.entrySet()) {
+            if (card.getValue() == 2 && card.getKey().compareTo(RankEnum.ten) >= 0) {
+                return true;
+            }
+        }
+        return false;
+    }
     
     public boolean pocketPairs(Card card1, Card card2){
     	return card1.getRank() == card2.getRank();
     }
 
-    public String whatDoWeHave(List<Card> cards) {
+    public String whatDoWeHaveMax(List<Card> cards) {
         String whatWeHave = "";
         if (pair(cards)) {
             whatWeHave = "pair";
+        }
+        if (bigPair(cards)) {
+            whatWeHave = "bigPair";
         }
         if (twoPair(cards)) {
             whatWeHave = "twopair";
