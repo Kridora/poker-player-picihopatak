@@ -26,7 +26,7 @@ public class Player {
         }
       
         if (config != null && config.getKEEP_POCKET_PAIRS().equals("ON")) {
-            return new Strategy().getBetPairStrat(doWeHave, gameState);
+            return new Strategy().getBet(doWeHave, gameState);
         }
         return 0;
     }
