@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class DoWeHave {
     public boolean pair(List<Card> cards) {
-        Map<Integer, Integer> cardNum = cardCount(cards);
+        Map<Card.RankEnum, Integer> cardNum = cardCount(cards);
         for (int cardNumber : cardNum.values()) {
             if (cardNumber == 2) {
                 return true;
@@ -17,10 +17,10 @@ public class DoWeHave {
         return false;
     }
 
-    private Map<Integer, Integer> cardCount(List<Card> cards) {
-        Map<Integer, Integer> cardNum = new HashMap<>();
+    private Map<Card.RankEnum, Integer> cardCount(List<Card> cards) {
+        Map<Card.RankEnum, Integer> cardNum = new HashMap<>();
         for (Card card : cards) {
-            int rank = card.getRank();
+            Card.RankEnum rank = card.getRank();
             if (cardNum.get(rank) != null) {
                 cardNum.put(rank, cardNum.get(rank) + 1);
             } else {
@@ -33,7 +33,7 @@ public class DoWeHave {
     public boolean premiumCards(List<Card> cards) {
         int numOfPremiumCard = 0;
         for (Card card : cards) {
-            if (card.getRank() >= 10) {
+            if (card.getRank().compareTo(Card.RankEnum.ten) >= 0) {
                 numOfPremiumCard++;
             }
         }
@@ -44,7 +44,7 @@ public class DoWeHave {
     }
 
     public boolean triple(List<Card> cards) {
-        Map<Integer, Integer> cardNum = cardCount(cards);
+        Map<Card.RankEnum, Integer> cardNum = cardCount(cards);
         for (int cardNumber : cardNum.values()) {
             if (cardNumber == 3) {
                 return true;
@@ -55,7 +55,7 @@ public class DoWeHave {
 
     public boolean twoPair(List<Card> cards) {
         int pairs = 0;
-        Map<Integer, Integer> cardNum = cardCount(cards);
+        Map<Card.RankEnum, Integer> cardNum = cardCount(cards);
         for (int cardNumber : cardNum.values()) {
             if (cardNumber == 2) {
                 pairs++;

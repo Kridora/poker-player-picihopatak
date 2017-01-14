@@ -33,7 +33,7 @@ public class Card {
         this.suit = suit;
     }
 
-    public int getRank() {
+    public RankEnum getRank() {
         return rank;
     }
 
@@ -49,11 +49,10 @@ public class Card {
         this.suit = suit;
     }
 
-    public RankEnum Rank(String rank)
+    public RankEnum Rank(String rank) {
         switch (rank) {
             case "2":
-			return RankEnum.two;			
-
+			return RankEnum.two;
             case "3":
 			return RankEnum.three;			
             case "4":
@@ -79,7 +78,7 @@ public class Card {
             case "A":
 			return RankEnum.Ace;			
             default:
-                return 0;
+                return RankEnum.zero;
         }
     }
 
