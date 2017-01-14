@@ -71,7 +71,10 @@ public class Strategy {
 
     public int minimumRaise(GameState gameState) {
         PlayerBot me = gameState.getMe();
-        return gameState.getCurrent_buy_in() - me.getBet() + gameState.getMinimum_raise();
+        if(gameState.getCurrent_buy_in() < gameState.getSmall_blind()*4)
+        	return gameState.getCurrent_buy_in() - me.getBet() + gameState.getMinimum_raise();
+        else
+        	return 0;
     }
 
     public int call(GameState gameState) {
