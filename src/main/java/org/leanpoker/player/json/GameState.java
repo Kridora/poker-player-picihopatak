@@ -140,4 +140,8 @@ public class GameState
     public void setMinimum_raise(int minimum_raise) {
         this.minimum_raise = minimum_raise;
     }
+
+    public PlayerBot getMe(){
+        return getPlayers().get(getIn_action());
+    }
 }

@@ -53,8 +53,8 @@ public class DoWeHaveTest {
     public void dontWeHavePremiumCards2() {
         List<Card> cards = new ArrayList<>();
 
-        cards.add(new Card("3", "hearts"));
-        cards.add(new Card("3", "pick"));
+        cards.add(new Card("4", "hearts"));
+        cards.add(new Card("7", "pick"));
 
         Assert.assertEquals(false, new DoWeHave().premiumCards(cards));
     }
