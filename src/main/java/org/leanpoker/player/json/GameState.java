@@ -18,11 +18,12 @@ public class GameState
     private int dealer;
     private int current_buy_in;
     private int pot;
+    private int in_action;
+    private int minimum_raise;
     private List<Card> community_cards;
-    private List<Player> players;
+    private List<PlayerBot> players;
 
-    public GameState(String tournament_id, String game_id, int round, int bet_index, int small_blind, int orbits, int dealer, int current_buy_in, int pot, List<Card> community_cards, List<Player> players) {
-
+    public GameState(String tournament_id, String game_id, int round, int bet_index, int small_blind, int orbits, int dealer, int current_buy_in, int pot, int in_action, int minimum_raise, List<Card> community_cards, List<PlayerBot> players) {
         this.tournament_id = tournament_id;
         this.game_id = game_id;
         this.round = round;
@@ -32,8 +33,18 @@ public class GameState
         this.dealer = dealer;
         this.current_buy_in = current_buy_in;
         this.pot = pot;
+        this.in_action = in_action;
+        this.minimum_raise = minimum_raise;
         this.community_cards = community_cards;
         this.players = players;
+    }
+
+    public int getIn_action() {
+        return in_action;
+    }
+
+    public void setIn_action(int in_action) {
+        this.in_action = in_action;
     }
 
     public String getTournament_id() {
@@ -116,11 +127,19 @@ public class GameState
         this.community_cards = community_cards;
     }
 
-    public List<Player> getPlayers() {
+    public List<PlayerBot> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<Player> players) {
+    public void setPlayers(List<PlayerBot> players) {
         this.players = players;
+    }
+
+    public int getMinimum_raise() {
+        return minimum_raise;
+    }
+
+    public void setMinimum_raise(int minimum_raise) {
+        this.minimum_raise = minimum_raise;
     }
 }
