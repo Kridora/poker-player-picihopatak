@@ -11,7 +11,7 @@ public class Player {
     static final String VERSION = "pair";
 
     public static int betRequest(JsonElement request) {
-
+/*
         GameState gameState = new GsonBuilder().create().fromJson(request, GameState.class);
         DoWeHave doWeHave = new DoWeHave();
 
@@ -25,6 +25,7 @@ public class Player {
         if (doWeHave.pair(me.getHole_cards())) {
             return minimumRaise(gameState, me);
         }
+        */
         return 0;
 
     }
