@@ -12,6 +12,6 @@ public class ConfigRetrieverTest {
     @Test
     public void getKeepPocketPairs() throws IOException {
         Config configRetriever = ConfigRetriever.readJsonFromUrl();
-        Assert.assertEquals("OFF", configRetriever.getKEEP_POCKET_PAIRS());
+        Assert.assertEquals("ON", configRetriever.getKEEP_POCKET_PAIRS());
     }
 }

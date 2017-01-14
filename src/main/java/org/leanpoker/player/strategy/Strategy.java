@@ -18,6 +18,14 @@ public class Strategy {
         return 0;
     }
 
+    public int getBetPairStrat(DoWeHave doWeHave, GameState gameState){
+        PlayerBot me = gameState.getMe();
+        if (doWeHave.pair(me.getHole_cards())) {
+            return call(gameState);
+        }
+        return 0;
+    }
+
     public int minimumRaise(GameState gameState) {
         PlayerBot me = gameState.getMe();
         return gameState.getCurrent_buy_in() - me.getBet() + gameState.getMinimum_raise();
